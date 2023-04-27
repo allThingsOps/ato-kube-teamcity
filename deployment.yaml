@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,19 +15,19 @@ spec:
         app: teamcity-server
     spec:
       volumes:
-      - name: teamcity-server
-        persistentVolumeClaim:
-          claimName: teamcity-server-pvc
+        - name: teamcity-server
+          persistentVolumeClaim:
+            claimName: teamcity-server-pvc
       containers:
-      - image: registry.allthingsops.io/allthingsops/ato-teamcity
-        name: teamcity-server
-        resources:
-          requests:
-            memory: 1Gi
-            cpu: 500m
-          limits:
-            memory: 2Gi
-            cpu: 1000m
-        ports:
-        - containerPort: 8111
-          protocol: TCP 
+        - image: registry.allthingsops.io/allthingsops/ato-teamcity
+          name: teamcity-server
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 500m
+            limits:
+              memory: 2Gi
+              cpu: 1000m
+          ports:
+            - containerPort: 8111
+              protocol: TCP
